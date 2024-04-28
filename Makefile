@@ -4,7 +4,7 @@ install-uv:
 	uv pip install -r requirements.txt
 
 build: install-uv
-	cd evidence && npm install
+	cd evidence && pnpm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/simulator
@@ -13,19 +13,19 @@ build: install-uv
 run:
 	cd dlt && python nba_pipeline.py
 	cd sqlmesh && sqlmesh plan --no-prompts --auto-apply
-	cd evidence && npm run sources
+	cd evidence && pnpm run sources
 
 dev:
-	cd evidence && npm run dev -- --host 0.0.0.0
+	cd evidence && pnpm run dev -- --host 0.0.0.0
 
 serve:
 	rm -rf evidence/build
-	cd evidence && npm run build:strict
-	cd evidence && npm i -g http-server
+	cd evidence && pnpm run build:strict
+	cd evidence && pnpm i -g http-server
 	cd evidence && npx http-server ./build
 
 evidence-build:
-	cd evidence && npm run build
+	cd evidence && pnpm run build
 
 docker-build:
 	docker build -t mdsbox .
