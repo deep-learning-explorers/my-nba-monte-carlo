@@ -1,9 +1,9 @@
 install-uv:
-	pip install uv
-	uv pip install --system -r requirements.txt
+	pipx install uv
+	uv pip compile requirements.in > requirements.txt
+	uv pip install -r requirements.txt
 
 build: install-uv
-	cd transform && dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
@@ -11,8 +11,8 @@ build: install-uv
 	mkdir -p data/data_catalog/analysis
 
 run:
-	cd dlt && python3 nba_pipeline.py
-	cd transform && dbt build
+	cd dlt && python nba_pipeline.py
+	cd sqlmesh && sqlmesh plan --no-prompts --auto-apply
 	cd evidence && npm run sources
 
 dev:
