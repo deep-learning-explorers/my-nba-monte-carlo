@@ -1,0 +1,18 @@
+project:
+  type: website
+
+website:
+  title: "Modern Data Stack in a Box Explained"
+  navbar:
+    left:
+      - href: index.ipynb
+        text: Home
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
