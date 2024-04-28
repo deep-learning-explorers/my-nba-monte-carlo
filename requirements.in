@@ -1,0 +1,12 @@
+# pipx
+# dbt-core~=1.7.0 
+# dbt-duckdb~=1.7.0
+pandas 
+pyarrow
+duckdb~=0.10.2
+# sqlmesh==0.88
+git+https://github.com/butchland/sqlmesh.git@try/test-notebooks-again
+dlt[duckdb]
+jupyter
+jupyterlab-vim
+pickleshare
